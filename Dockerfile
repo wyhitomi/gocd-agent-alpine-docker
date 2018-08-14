@@ -65,6 +65,10 @@ RUN set -ex; \
 	dockerd -v; \
 	docker -v
 
+RUN apk add --no-cache sudo \
+  && sed -i 's/wheel:x:10:root/wheel:x:10:root,go/g' /etc/group \
+  && echo '%go ALL=(ALL) NOPASSWD: /usr/local/bin/docker' > /etc/sudoers.d/go
+
 COPY modprobe.sh /usr/local/bin/modprobe
 COPY docker-entrypoint.sh /usr/local/bin/
 
