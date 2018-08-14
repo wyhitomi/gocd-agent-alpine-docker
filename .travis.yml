@@ -21,4 +21,4 @@ jobs:
       - docker push $DOCKER_USERNAME/gocd-agent-alpine-docker:v18.7.0
     - stage: test
       script:
-      - docker run --rm $DOCKER_USERNAME/gocd-agent-alpine-docker:v18.7.0 docker version
+      - docker run --rm -v /var/run/docker.sock:/var/run/docker.sock $DOCKER_USERNAME/gocd-agent-alpine-docker:v18.7.0 docker version
