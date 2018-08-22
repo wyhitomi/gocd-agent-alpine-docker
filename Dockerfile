@@ -12,6 +12,8 @@ RUN apk update \
   # Clean APK cache
   && rm -rf /var/cache/apk/*
 
+# Code below from https://github.com/docker-library/docker
+
 RUN apk add --no-cache \
 		ca-certificates
 
